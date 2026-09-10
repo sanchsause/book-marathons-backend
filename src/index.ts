@@ -21,6 +21,7 @@ app.post('/api/users', async (req, res) => {
     const { telegramId, firstName, lastName, username } = req.body;
 
     if (!telegramId || !firstName) {
+      console.log("TEST")
       return res.status(400).json({ error: 'telegramId и firstName обязательны' });
     }
 
@@ -48,5 +49,5 @@ app.get('/health', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running on http://localhost:${PORT}`);
+  console.log(`🚀 Server is running on port ${PORT}`);
 });

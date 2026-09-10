@@ -7,8 +7,9 @@ build:
   commands:
     - npm ci
     - npx prisma generate
-    - npx prisma migrate deploy
     - npm run build
 
 run:
-  command: node dist/index.js
+  command: npx prisma db push --skip-generate && node dist/index.js
+  volumes:
+    - /data
