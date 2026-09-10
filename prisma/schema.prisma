@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  telegramId BigInt   @unique @map("telegram_id")
+  firstName  String   @map("first_name")
+  lastName   String?  @map("last_name")
+  username   String?
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}
