@@ -2,7 +2,7 @@ meta:
   environment: node
   toolchain:
     name: npm
-    version: 20.x
+    version: 20
 
 build:
   additionalCommands: npm ci && npx prisma generate && npm run build
