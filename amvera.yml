@@ -1,15 +1,14 @@
 meta:
-  environment: nodejs
+  environment: node
   toolchain:
-    version: 20.x
+    name: npm
+    version: 18
 
 build:
-  commands:
-    - npm ci
-    - npx prisma generate
-    - npm run build
+  additionalCommands: npm ci && npx prisma generate && npm run build
+  artifacts:
+    "*": /
 
 run:
   command: npx prisma db push --skip-generate && node dist/index.js
-  volumes:
-    - /data
+  containerPort: 3000
